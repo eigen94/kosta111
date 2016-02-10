@@ -1,8 +1,9 @@
 package kosta111.simpleCalendar;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Memeber {
+public class Member implements Serializable{
 
 	//member
 	private String name;
@@ -10,8 +11,8 @@ public class Memeber {
 	private ArrayList<Integer> room_num = new ArrayList<Integer>();
 	
 	//constructor
-	public Memeber() {}
-	public Memeber(String name, String pass_word) {
+	public Member() {}
+	public Member(String name, String pass_word) {
 		this.name=name;
 		this.pass_word=pass_word;
 	}
@@ -34,5 +35,10 @@ public class Memeber {
 	}
 	public void setRoom_num(ArrayList<Integer> room_num) {
 		this.room_num = room_num;
+	}
+	@Override
+	public String toString() {
+		return "Memeber [name=" + name + ", pass_word=" + pass_word
+				+ ", room_num=" + room_num + "]";
 	}
 }
