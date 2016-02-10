@@ -8,13 +8,18 @@ public class ServerMain {
 		Socket socket = null;
 		ServerSocket objectServer = null;
 		Member m = null;
+		Manager manager = new Manager();
+		manager.addMem(new Member("b","b"));
 		
 		try {
 			objectServer = new ServerSocket(9090);
 			socket = objectServer.accept();
 			
-			ServerThread st = new ServerThread(socket, m);
-			st.start();
+			//ServerThread st = new ServerThread(socket, m);
+			//st.start();
+			
+			PerClientThread t = new PerClientThread(socket, manager);
+			t.start();
 			
 		} catch (Exception e) {
 			// TODO: handle exception

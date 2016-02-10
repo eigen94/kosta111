@@ -11,7 +11,7 @@ public class ClientMain {
 		try {
 			socket = new Socket("localhost", 9090);
 			
-			ClientThread ct = new ClientThread(socket, m);
+			ClientThreadTest ct = new ClientThreadTest(socket);
 			
 			ct.start();
 			

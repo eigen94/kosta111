@@ -33,12 +33,11 @@ public class Member implements Serializable{
 	public ArrayList<Integer> getRoom_num() {
 		return room_num;
 	}
-	public void setRoom_num(ArrayList<Integer> room_num) {
-		this.room_num = room_num;
+	public void setRoom_num(int room_num) {
+		getRoom_num().add(room_num);
 	}
 	@Override
 	public String toString() {
-		return "Memeber [name=" + name + ", pass_word=" + pass_word
-				+ ", room_num=" + room_num + "]";
+		return name + "," + pass_word;
 	}
 }

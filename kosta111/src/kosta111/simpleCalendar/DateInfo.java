@@ -1,49 +1,62 @@
 package kosta111.simpleCalendar;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
-public class DateInfo implements Serializable{
+public class DateInfo{
 	
-	String name;
+	
 	String date;
-	public DateInfo(String name,String date) {
-		this.name=name;
-		this.date=date;
+	List<Member> selMems = new ArrayList<Member>();
+	
+	public DateInfo(String date, Member m) {
+		super();
+		this.date = date;
+		selMems.add(m);
 	}
 	
-	public String getName() {
-		return name;
+	public void addM(Member m){
+		
+		selMems.add(m);
 	}
-	public void setName(String name) {
-		this.name = name;
+	
+	public void removeM(Member m){
+		
+		for(int i=0;i<selMems.size();i++){
+			if(selMems.get(i) ==m){
+				selMems.remove(i);
+				break;
+			}
+		}
+		
+			
 	}
+	
+	public boolean AllSel(int MemNum){
+		
+		if(MemNum ==selMems.size())
+			return true;
+		return false;
+		
+	}
+
 	public String getDate() {
 		return date;
 	}
+
 	public void setDate(String date) {
 		this.date = date;
 	}
 
-
-
-	@Override
-	public boolean equals(Object obj) {
-		if(obj instanceof DateInfo){
-			DateInfo dateInfo = (DateInfo) obj;
-			return dateInfo.name.equals(name)&& (dateInfo.date.equals(date));
-		} else {
-			return false;
-		}
+	public List<Member> getSelMems() {
+		return selMems;
 	}
+
+	public void setSelMems(List<Member> selMems) {
+		this.selMems = selMems;
+	}
+
 	
-	@Override
-	public int hashCode() {
-		return name.hashCode()+date.hashCode();
-	}
-
-	@Override
-	public String toString() {
-		return "DateInfo [name=" + name + ", date=" + date + "]";
-	}
 	
 }
