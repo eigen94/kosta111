@@ -4,18 +4,20 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class ServerMain {
-
 	public static void main(String[] args) {
-		ServerSocket server = null;
 		Socket socket = null;
+		ServerSocket objectServer = null;
+		Member m = null;
 		
 		try {
-			server = new ServerSocket(9090);
-			socket = server.accept();
+			objectServer = new ServerSocket(9090);
+			socket = objectServer.accept();
 			
+			ServerThread st = new ServerThread(socket, m);
+			st.start();
 			
 		} catch (Exception e) {
-			e.printStackTrace();
+			// TODO: handle exception
 		}
 	}
 }
