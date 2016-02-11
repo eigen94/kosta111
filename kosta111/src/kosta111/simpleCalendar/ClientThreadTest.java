@@ -75,25 +75,41 @@ public class ClientThreadTest extends Thread{
 					dos.writeUTF("mode4");
 					dos.flush();
 					System.out.println("방입장");
+					System.out.println("write roomNum : ");
 					String roomInt2 = sc.next();
 					dos.writeInt(Integer.parseInt(roomInt2));
 					dos.flush();
 					
+//					
+//					String msg = sc.next();
+//					if(msg.equals("0"))
+//						break;
+//					dos.writeUTF(msg);
+//					dos.flush();
 					
-					String msg = sc.next();
-					if(msg.equals("0"))
-						break;
-					dos.writeUTF(msg);
-					dos.flush();
-					
-				while(true){
-					
-					String in = dis.readUTF();
-					if(in.equals("9"))
-						break;
-					System.out.println(in);
-				}
+//				while(true){
+//					
+//					String in = dis.readUTF();
+//					if(in.equals("9"))
+//						break;
+//					System.out.println(in);
+//				}
 				
+					
+					//InnerThreadStart
+					
+					ClientInnerThreadSend cits = new ClientInnerThreadSend(dos);
+					ClientInnerThreadRecieve citr = new ClientInnerThreadRecieve(dis);
+					
+					cits.start();
+					citr.start();
+					while(true){
+						
+						if(cits.isAlive()!=true){
+							break;
+						}
+						
+					}
 				
 				/*	while(true){
 						String msg = sc.next();

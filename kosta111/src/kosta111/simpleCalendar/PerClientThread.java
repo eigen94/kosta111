@@ -74,18 +74,18 @@ public class PerClientThread extends Thread {
 
 				String mode = dis.readUTF();
 
-				// ·Î±×ÀÎ »ý¼º
+				// ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 				if (mode.equals("mode1")) {
 					String logInfo = dis.readUTF();
 					System.out.println(logInfo);
 				if (manager.getMem(logInfo) != null) {
 						member = manager.getMem(logInfo);
-						System.out.println("·Î±×ÀÎ ¼º°ø");
+						System.out.println("ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 
 					}
 				}
 
-				// mode2 : ¹æ »ý¼º
+				// mode2 : ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 				if (mode.equals("mode2")) {
 					Object obj = ois.readObject();
 					MemberList mList = (MemberList) obj;
@@ -96,16 +96,16 @@ public class PerClientThread extends Thread {
 					
 				}
 
-				// mode3: ¹æ ¾Æ¿ô
+				// mode3: ï¿½ï¿½ ï¿½Æ¿ï¿½
 				if (mode.equals("mode3")) {
 					int Room_num = dis.readInt();
 				
 					manager.RoomOut(Room_num, member);
-					System.out.println("¹æ ¾Æ¿ôÈ£"+manager.getRooms().get(0).getMembers().size());
+					System.out.println("ï¿½ï¿½ ï¿½Æ¿ï¿½È£"+manager.getRooms().get(0).getMembers().size());
 
 				}
 
-				// mode4: ¹æ ÀÔÀå
+				// mode4: ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 				if (mode.equals("mode4")) {
 					int room_num = dis.readInt();
 
@@ -116,9 +116,9 @@ public class PerClientThread extends Thread {
 					
 					while(true){
 					
-						System.out.println("¿Ö");
+					System.out.println("room mode");
 					String msg = dis.readUTF();
-					if(msg.equals("¤À"))
+					if(msg.equals("out"))
 					break;
 					sendAll(msg, room);
 					
