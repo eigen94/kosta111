@@ -79,6 +79,9 @@ public class ClientThreadTest extends Thread{
 					dos.writeInt(Integer.parseInt(roomInt2));
 					dos.flush();
 					
+					Object obj = ois.readObject();
+					Room room = (Room)obj;
+					
 					
 					String msg = sc.next();
 					if(msg.equals("0"))
@@ -89,7 +92,15 @@ public class ClientThreadTest extends Thread{
 				while(true){
 					
 					String in = dis.readUTF();
-					if(in.equals("9"))
+					String[] Token = in.split(",");
+					String[] Mtoken = Token[2].split("/");
+					if(Mtoken.length==room.getMembers().size())
+						System.out.println("all");
+					else
+						System.out.println("not all");
+					
+					
+					if(in.equals("0"))
 						break;
 					System.out.println(in);
 				}

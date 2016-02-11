@@ -50,11 +50,11 @@ public class DateInfo{
 			
 	}
 	
-	public boolean AllSel(int MemNum){
+	public String AllSel(int MemNum){
 		
 		if(MemNum ==selMems.size())
-			return true;
-		return false;
+			return "o";
+		return "x";
 		
 	}
 
