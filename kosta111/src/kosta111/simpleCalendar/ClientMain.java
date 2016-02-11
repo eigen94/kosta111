@@ -11,9 +11,9 @@ public class ClientMain {
 		try {
 			socket = new Socket("localhost", 9090);
 			
-			ClientThreadTest ct = new ClientThreadTest(socket);
+			ClientTest ct = new ClientTest(socket);
 			
-			ct.start();
+			//ct.start();
 			
 		} catch (Exception e) {
 			// TODO: handle exception

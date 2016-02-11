@@ -24,7 +24,7 @@ public class ClientReceive extends Thread {
 		
 		while(true){
 			
-			/*
+			
 				String msg = dis.readUTF();
 				System.out.println(msg);
 				if(msg.equals("0"))
@@ -36,8 +36,7 @@ public class ClientReceive extends Thread {
 			}
 			
 		
-		
-		*/
+	
 		System.out.println("¹Þ°í");
 		
 		

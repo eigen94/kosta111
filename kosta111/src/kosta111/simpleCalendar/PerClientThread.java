@@ -105,50 +105,46 @@ public class PerClientThread extends Thread {
 
 				}
 
-				// mode4: 방 입장   s
+				// mode4: 방 입장
 				if (mode.equals("mode4")) {
 					int room_num = dis.readInt();
 
 					Room room = manager.getRoom(room_num);
 					room.addOutput(dos);
 					
+					oos.writeObject(room);
+					oos.flush();
 					
 					
 					while(true){
 					
-				
-					String msg = dis.readUTF();
-					String[] token = msg.split(",");
-					
-					//선택
-					if(token[0].equals("+"))
-					  room.addDate(token[1], member);
-					
-				    //해제
-					if(token[0].equals("-"))
-						room.removeDate(token[1], member);
 						
-						
-						
-					if(msg.equals("0"))
-					break;
-					
-					//접속자에게 실시간으로 뿌려주는 내용
-					
-					msg += ","+room.getD;
-					
-					
-					sendAll(msg, room);
-					
-					
-					
-					
+						String msg = dis.readUTF();
+						String[] token = msg.split(",");
+
+						// 선택
+						if (token[0].equals("+"))
+							room.addDate(token[1], member);
+
+						// 해제
+						if (token[0].equals("-"))
+							room.removeDate(token[1], member);
+
+						System.out.println(token[1]);
+						if (msg.equals("0"))
+							break;
+
+						// 접속자에게 실시간으로 뿌려주는 내용
+
+						msg += "," + room.getDate(token[1]).toString() + ","
+								+ room.getDate(token[1]);
+
+						sendAll(msg, room);
 					
 
 				}
+					break;
 					
-					
-					room.removeOutput(dos);
 				}
 
 			} catch (ClassNotFoundException e) {

@@ -23,7 +23,7 @@ public class ClientSender extends Thread {
 		
 		while (true) {
 
-			/*String msg = sc.next();
+			String msg = sc.next();
 			if(msg.equals("0"))
 				break;
 			try {
@@ -32,7 +32,7 @@ public class ClientSender extends Thread {
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}*/
+			}
 			System.out.println("º¸³»°í");
 
 		}
