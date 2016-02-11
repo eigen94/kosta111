@@ -7,6 +7,23 @@ import java.util.List;
 public class DateInfo{
 	
 	
+	@Override
+	public String toString() {
+		String s="";
+		for(int i =0;i<selMems.size();i++)
+		{
+			if(i==selMems.size()-1){
+				s+=selMems.get(i).getName();
+				break;
+			}
+			s += selMems.get(i).getName()+"/"; 
+			
+		}
+			
+			
+		return s;
+	}
+
 	String date;
 	List<Member> selMems = new ArrayList<Member>();
 	

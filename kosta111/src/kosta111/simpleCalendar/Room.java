@@ -36,10 +36,15 @@ public class Room implements Serializable {
 		}
 
 	}
-	
-	public void addOutput(DataOutputStream dos){
-		
+
+	public void addOutput(DataOutputStream dos) {
+
 		output.add(dos);
+	}
+
+	public void removeOutput(DataOutputStream dos) {
+
+		output.remove(dos);
 	}
 
 	public int getRoom_num() {
@@ -56,28 +61,34 @@ public class Room implements Serializable {
 			}
 
 		}
-		
+
 		Dates.add(new DateInfo(Date, m));
 
 	}
-	
-	
-	public void removeDate(String Date,Member m){
-		
+
+	public void removeDate(String Date, Member m) {
+
 		for (int i = 0; i < Dates.size(); i++) {
 			if (Dates.get(i).getDate().equals(Date)) {
 				Dates.get(i).removeM(m);
-				if(Dates.get(i).getSelMems().size()==0)
+				if (Dates.get(i).getSelMems().size() == 0)
 					Dates.remove(i);
 				return;
 			}
 
 		}
-		
-		
+
 	}
 
+	public DateInfo getDate(String msg) {
 
+		for (int i = 0; i < Dates.size(); i++) {
 
+			if (Dates.get(i).getDate().equals(msg))
+				return Dates.get(i);
+
+		}
+		return null;
+	}
 
 }

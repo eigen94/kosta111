@@ -105,7 +105,7 @@ public class PerClientThread extends Thread {
 
 				}
 
-				// mode4: 방 입장
+				// mode4: 방 입장   s
 				if (mode.equals("mode4")) {
 					int room_num = dis.readInt();
 
@@ -116,16 +116,39 @@ public class PerClientThread extends Thread {
 					
 					while(true){
 					
-						System.out.println("왜");
+				
 					String msg = dis.readUTF();
-					if(msg.equals("ㅐ"))
+					String[] token = msg.split(",");
+					
+					//선택
+					if(token[0].equals("+"))
+					  room.addDate(token[1], member);
+					
+				    //해제
+					if(token[0].equals("-"))
+						room.removeDate(token[1], member);
+						
+						
+						
+					if(msg.equals("0"))
 					break;
+					
+					//접속자에게 실시간으로 뿌려주는 내용
+					
+					msg += ","+room.getD;
+					
+					
 					sendAll(msg, room);
+					
+					
+					
+					
 					
 
 				}
-					break;
 					
+					
+					room.removeOutput(dos);
 				}
 
 			} catch (ClassNotFoundException e) {
